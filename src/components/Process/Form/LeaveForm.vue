@@ -1,9 +1,14 @@
 <template>
-        <el-form v-loading="loading" :rules="rules" :model="formData"  ref="formData"  label-suffix=":"
+        <el-form
+          v-loading="loading"
+          :rules="rules"
+          :model="formData"
+          ref="formData"
+          label-suffix=":"
              label-width="170px" size="small" align="left" style="max-width:900px">
             <el-form-item v-if="operate == '详情'" label="请假人" prop="loanDate">
                 <span>{{formData.username}}</span>
-            </el-form-item> 
+            </el-form-item>
             <el-form-item label="请假类型" prop="leaveType" >
                 <!-- 请假类型：1病假，2事假，3年假，4婚假，5产假，6丧假，7探亲，8调休，9其他 -->
                 <el-radio-group v-model="formData.leaveType" size="mini" >
@@ -52,9 +57,9 @@ const leaveTypes = [
     {label: '婚假', value: 4},
     {label: '产假', value: 5},
     {label: '丧假', value: 6},
-    {label: '探亲', value: 7},
-    {label: '调休', value: 8},
-    {label: '其他', value: 9}
+  { label: '探亲', value: 7 },
+  { label: '调休', value: 8 },
+  { label: '其他', value: 9 }
 ]
 
 import api from '@/api/leave'
@@ -67,7 +72,7 @@ export default {
         },
         businessKey: String, // 业务id
     },
-    
+
     data() {
         return {
             loading: false,
@@ -75,7 +80,7 @@ export default {
             formData: { // 提交表单数据
                 leaveType: 1,
                 duration: 0, // 请假时长（小时）
-            }, 
+            },
             rules: {
                 leaveType: [
                     {required: true, message: '请选择请假类型', trigger: 'change'},
@@ -160,8 +165,8 @@ export default {
             this.$refs['formData'].resetFields()
             this.$emit('close', refresh)
         },
-        
-        
+
+
     }
 }
 </script>

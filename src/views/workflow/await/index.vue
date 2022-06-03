@@ -1,6 +1,6 @@
 <template>
     <div class="app-container" v-loading="loading">
-        <!-- 条件查询 -->        
+        <!-- 条件查询 -->
         <el-form :inline="true" :model="query" size="mini">
             <el-form-item label="任务名称:">
                 <el-input v-model.trim="query.taskName" ></el-input>
@@ -17,7 +17,8 @@
             <el-table-column align="center" prop="taskName" label="任务名称" min-width="160"></el-table-column>
             <el-table-column align="center" label="所属流程" min-width="120">
               <template slot-scope="{row}">
-                {{`${row.processName} - v${row.version}`}}
+<!--                {{ `${row.processName} - v${row.version}` }}-->
+                {{ `流程 - v${row.version}` }}
               </template>
             </el-table-column>
             <el-table-column  align="center" prop="proposer" label="流程发起人" width="180" ></el-table-column>
@@ -47,10 +48,10 @@
             layout="total, sizes, prev, pager, next, jumper"
             :total="page.total">
         </el-pagination>
-        
+
         <!-- 通过 -->
         <verify ref="verifyRef" :taskId="row.taskId"></verify>
-        
+
         <!-- 转办 -->
         <turn ref="turnRef" :taskId="row.taskId"></turn>
 
@@ -143,7 +144,7 @@ export default {
             this.query = {}
             this.fetchData()
         },
-        
+
         // 点击通过
         clickComplete(row) {
             if (this.checkProcessTask(row)) {
@@ -197,7 +198,7 @@ export default {
            }
         },
 
-        
+
     }
 }
 </script>

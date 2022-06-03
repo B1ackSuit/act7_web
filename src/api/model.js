@@ -13,11 +13,11 @@ export default {
 
   // 新增模型
   add(data) {
-      return request({
-          url: '/model',
-          method: 'post',
-          data
-      })
+    return request({
+      url: '/model',
+      method: 'post',
+      data
+    })
   },
 
   // 删除模型
@@ -27,7 +27,7 @@ export default {
           method: 'delete'
       })
   },
-  
+
 
   // 部署发布流程
   deployById(id) {

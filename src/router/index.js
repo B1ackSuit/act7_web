@@ -93,7 +93,7 @@ export const constantRoutes = [
         name: 'Loan',
         component: () => import('@/views/workflow/apply/loan'),
         meta: { title: '借款申请', icon: 'table' }
-      },
+      }
     ]
   },
 

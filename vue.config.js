@@ -12,7 +12,7 @@ const name = defaultSettings.title || 'vue Admin Template' // page title
 // use administrator privileges to execute the command line.
 // For example, Mac: sudo npm run
 // You can change the port by the following methods:
-// port = 9528 npm run dev OR npm run dev --port = 9528
+// port = 8082 npm run dev OR npm run dev --port = 8082
 const port = process.env.port || process.env.npm_config_port || 8082 // dev port
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -38,13 +38,13 @@ module.exports = {
     before: require('./mock/mock-server.js'),
     proxy: {
       [process.env.VUE_APP_BASE_API]: { // /dev-api
-        target: [process.env.VUE_APP_BASE_URL] + '', // 'http://localhost:9090/workflow',
+        target: [process.env.VUE_APP_BASE_URL] + '', // 'http://localhost:8082/workflow',
         changeOrigin: true,
         pathRewrite: {
           [ '^' + process.env.VUE_APP_BASE_API]: '' // /dev-api/test
-        },
-      },
-    },
+        }
+      }
+    }
   },
 
   configureWebpack: {

@@ -9,36 +9,36 @@
 
 <script>
 export default {
-    props: {
-      modelId: String,
-    },
+  props: {
+    modelId: String
+  },
 
-    data() {
-      return {
-        visible: false,
-      }
-    },
+  data() {
+    return {
+      visible: false,
+    }
+  },
 
-    computed:{
-        src(){
-          return "/modeler.html?modelId="+this.modelId
-        },
-        apiUrl(){
-          return  process.env.VUE_APP_BASE_API // "/dev-api";//后台部署的api服务
-        }
+  computed: {
+    src() {
+      return '/modeler.html?modelId=' + this.modelId
     },
-    
-    mounted(){
-      //全局存入当前vue实例，供activiti调用    
-      window.getMyVue = this;
-    },
-    
+    apiUrl() {
+      return process.env.VUE_APP_BASE_API // "/dev-api";//后台部署的api服务
+    }
+  },
+
+  mounted() {
+    //全局存入当前vue实例，供activiti调用
+    window.getMyVue = this
+  },
+
     methods:{
       goto(){
         this.$message.success("保存模型成功");
-        this.$router.push({name:"/sys/activiti"})    
+        this.$router.push({name:"/sys/activiti"})
       },
-  
+
       handleClose(done) {
         this.$confirm('请记得点击左上角保存按钮，确定关闭设计窗口?', '确认关闭',{
           confirmButtonText: '确定',
@@ -50,7 +50,7 @@ export default {
             // 刷新数据
             this.$parent.fetchData()
         }).catch(() => {})
-      }   
+      }
     }
   }
 </script>
